@@ -3,9 +3,8 @@ use std::{fs::File, io::Read};
 struct ProblemA {}
 
 impl ProblemA {
-    fn part_one(&self) {
-        let mut file = File::open("/home/raph/projects/adventofcode/src/inputs/a.txt")
-            .expect("file not found");
+    fn part_one(&self, path: &str) {
+        let mut file = File::open(path).expect("file not found");
         let mut data = String::new();
 
         file.read_to_string(&mut data)
@@ -29,9 +28,8 @@ impl ProblemA {
         println!("Contenders: {}", first_element)
     }
 
-    fn part_two(&self) {
-        let mut file = File::open("/home/raph/projects/adventofcode/src/inputs/a.txt")
-            .expect("file not found");
+    fn part_two(&self, path: &str) {
+        let mut file = File::open(path).expect("file not found");
         let mut data = String::new();
 
         file.read_to_string(&mut data)
@@ -62,6 +60,7 @@ impl ProblemA {
 fn main() {
     let problem_a: ProblemA = ProblemA {};
 
-    problem_a.part_one();
-    problem_a.part_two();
+    let path = "/Users/raphaelneumann/projects/adventofcode/src/inputs/a.txt";
+    problem_a.part_one(path);
+    problem_a.part_two(path);
 }
