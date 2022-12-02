@@ -1,5 +1,3 @@
-use std::{fs::File, io::Read};
-
 const O_ROCK: &str = "A";
 const O_PAPER: &str = "B";
 const O_SCISSOR: &str = "C";
@@ -16,16 +14,8 @@ const ROCK_POINTS: i32 = 1;
 const PAPER_POINTS: i32 = 2;
 const SCISSOR_POINTS: i32 = 3;
 
-pub fn solve(base_path: &str) {
-    let owned_path = base_path.to_owned();
-    let path = owned_path + "/2.txt";
-
-    let mut file = File::open(path).expect("file not found");
-    let mut data = String::new();
-
-    file.read_to_string(&mut data)
-        .expect("error while reading file");
-
+pub fn solve() {
+    let data = include_str!("../inputs/2.txt");
     let rows = data.split("\n");
 
     let mut my_score = 0;

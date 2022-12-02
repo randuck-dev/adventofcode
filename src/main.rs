@@ -1,3 +1,5 @@
+use adventofcode::Solvable;
+
 mod day1;
 mod day2;
 
@@ -7,5 +9,5 @@ fn main() {
 
     let base_path = "/Users/raphaelneumann/projects/adventofcode/src/inputs";
     day1.solve(base_path);
-    day2.solve(base_path);
+    day2.solve();
 }

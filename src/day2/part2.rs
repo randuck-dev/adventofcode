@@ -20,7 +20,7 @@ pub fn solve() {
                 "C Y" => DRAW + SCISSOR_POINTS,
                 "C X" => LOOSE + PAPER_POINTS,
                 "C Z" => WIN + ROCK_POINTS,
-                _ => panic!("Unable to match sequence"),
+                _ => unreachable!("Unable to match sequence"),
             };
         })
         .sum();
