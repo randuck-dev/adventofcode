@@ -15,47 +15,45 @@ const PAPER_POINTS: i32 = 2;
 const SCISSOR_POINTS: i32 = 3;
 
 pub fn solve() {
-    let data = include_str!("../inputs/2.txt");
-    let rows = data.split("\n");
+    let score: i32 = include_str!("../inputs/2.txt")
+        .lines()
+        .map(|x| {
+            let mut score_this_round = 0;
+            let split_row: Vec<&str> = x.split(" ").collect();
 
-    let mut my_score = 0;
+            if split_row.len() != 2 {
+                println!("unable to detect enough values to determine strategy");
+                return 0;
+            }
 
-    for row in rows {
-        let mut score_this_round = 0;
-        let split_row: Vec<&str> = row.split(" ").collect();
+            let opponent_play = *split_row.get(0).unwrap();
+            let my_play = *split_row.get(1).unwrap();
 
-        if split_row.len() != 2 {
-            println!("unable to detect enough values to determine strategy");
-            continue;
-        }
+            if opponent_play == O_ROCK && my_play == M_PAPER {
+                score_this_round += WIN + PAPER_POINTS
+            } else if opponent_play == O_PAPER && my_play == M_SCISSOR {
+                score_this_round += WIN + SCISSOR_POINTS
+            } else if opponent_play == O_SCISSOR && my_play == M_ROCK {
+                score_this_round += WIN + ROCK_POINTS
+            } else if opponent_play == O_SCISSOR && my_play == M_SCISSOR {
+                score_this_round += DRAW + SCISSOR_POINTS
+            } else if opponent_play == O_ROCK && my_play == M_ROCK {
+                score_this_round += DRAW + ROCK_POINTS
+            } else if opponent_play == O_PAPER && my_play == M_PAPER {
+                score_this_round += DRAW + PAPER_POINTS
+            } else if opponent_play == O_PAPER && my_play == M_ROCK {
+                score_this_round += LOOSE + ROCK_POINTS
+            } else if opponent_play == O_ROCK && my_play == M_SCISSOR {
+                score_this_round += LOOSE + SCISSOR_POINTS
+            } else if opponent_play == O_SCISSOR && my_play == M_PAPER {
+                score_this_round += LOOSE + PAPER_POINTS
+            }
 
-        let opponent_play = *split_row.get(0).unwrap();
-        let my_play = *split_row.get(1).unwrap();
+            score_this_round
+        })
+        .sum();
 
-        if opponent_play == O_ROCK && my_play == M_PAPER {
-            score_this_round += WIN + PAPER_POINTS
-        } else if opponent_play == O_PAPER && my_play == M_SCISSOR {
-            score_this_round += WIN + SCISSOR_POINTS
-        } else if opponent_play == O_SCISSOR && my_play == M_ROCK {
-            score_this_round += WIN + ROCK_POINTS
-        } else if opponent_play == O_SCISSOR && my_play == M_SCISSOR {
-            score_this_round += DRAW + SCISSOR_POINTS
-        } else if opponent_play == O_ROCK && my_play == M_ROCK {
-            score_this_round += DRAW + ROCK_POINTS
-        } else if opponent_play == O_PAPER && my_play == M_PAPER {
-            score_this_round += DRAW + PAPER_POINTS
-        } else if opponent_play == O_PAPER && my_play == M_ROCK {
-            score_this_round += LOOSE + ROCK_POINTS
-        } else if opponent_play == O_ROCK && my_play == M_SCISSOR {
-            score_this_round += LOOSE + SCISSOR_POINTS
-        } else if opponent_play == O_SCISSOR && my_play == M_PAPER {
-            score_this_round += LOOSE + PAPER_POINTS
-        }
-
-        my_score += score_this_round
-    }
-
-    println!("Final score is: {}", my_score)
+    println!("Final score is: {}", score)
 
     // COLUMN 1: A -> ROCK, B -> PAPER, C -> SCISSORS
     // COLUMN 2: X -> ROCK, Y -> PAPER, Z -> SCISSORS
