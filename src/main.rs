@@ -5,6 +5,7 @@ mod day2;
 mod day3;
 mod day4;
 mod day5;
+mod day6;
 
 fn main() {
     let day1: day1::Day1 = day1::Day1 {};
@@ -12,12 +13,13 @@ fn main() {
     let day3: day3::Day3 = day3::Day3 {};
     let day4: day4::Day4 = day4::Day4 {};
     let day5: day5::Day5 = day5::Day5 {};
+    let day6: day6::Day6 = day6::Day6 {};
 
-    let base_path = "/Users/raphaelneumann/projects/adventofcode/src/inputs";
-    day1.solve(base_path);
+    day1.solve();
     day2.solve();
 
     day3.solve();
     day4.solve();
     day5.solve();
+    day6.solve();
 }

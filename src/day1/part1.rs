@@ -1,14 +1,5 @@
-use std::{fs::File, io::Read};
-
-pub fn solve(base_path: &str) {
-    let owned_path = base_path.to_owned();
-    let path = owned_path + "/1.txt";
-
-    let mut file = File::open(path).expect("file not found");
-    let mut data = String::new();
-
-    file.read_to_string(&mut data)
-        .expect("error while reading file");
+pub fn solve() {
+    let data = include_str!("../inputs/1.txt");
 
     let entries = data.split("\n");
 

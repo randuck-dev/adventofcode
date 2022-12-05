@@ -2,17 +2,12 @@ use std::vec;
 
 pub fn solve() {
     let data = include_str!("../inputs/5.txt");
-    let mut split = data.split("\n\n");
-    let position = split.next().unwrap();
-    let moves = split.next().unwrap();
+    let (position, moves) = data.split_once("\n\n").unwrap();
+
     let valid_lines: Vec<&str> = position.lines().filter(|i| i.contains("[")).collect();
     let potential_items = (valid_lines.get(0).unwrap().len() + 1) / 4;
 
-    let mut stacks: Vec<Vec<char>> = vec![];
-
-    for _ in 0..potential_items {
-        stacks.push(vec![]);
-    }
+    let mut stacks: Vec<Vec<char>> = vec![Vec::new(); potential_items as usize];
 
     for x in valid_lines {
         if !x.contains("[") {
