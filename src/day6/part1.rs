@@ -1,35 +1,28 @@
 use std::collections::HashSet;
 
 pub fn solve() {
-    let data = include_str!("../inputs/6.txt");
+    let n_lookup = 4;
+    let data = include_str!("../inputs/6.txt")
+        .chars()
+        .collect::<Vec<char>>();
+    let windowed = data.windows(n_lookup);
 
     let mut res = 0;
-
     let mut i = 0;
 
-    loop {
-        if i + 3 > data.len() {
-            break;
-        }
-
+    for val in windowed {
         let mut set: HashSet<char> = HashSet::new();
 
-        let first = data.chars().nth(i).unwrap();
-        let second = data.chars().nth(i + 1).unwrap();
-        let third = data.chars().nth(i + 2).unwrap();
-        let fourth = data.chars().nth(i + 3).unwrap();
+        for j in val {
+            set.insert(*j);
+        }
 
-        set.insert(first);
-        set.insert(second);
-        set.insert(third);
-        set.insert(fourth);
-
-        if set.len() == 4 {
-            res = i + 4;
+        if set.len() == n_lookup {
+            res = (i + n_lookup);
             break;
         }
 
-        i += 1;
+        i += 1
     }
 
     println!("Part1: {}", res);

@@ -1,12 +1,14 @@
 use std::collections::HashSet;
 
 pub fn solve() {
-    let data = include_str!("../inputs/6.txt");
+    let n_lookup = 14;
+    let data = include_str!("../inputs/6.txt")
+        .chars()
+        .collect::<Vec<char>>();
+    let windowed = data.windows(n_lookup);
+
     let mut res = 0;
     let mut i = 0;
-
-    let inter = data.chars().collect::<Vec<char>>();
-    let windowed = inter.windows(14);
 
     for val in windowed {
         let mut set: HashSet<char> = HashSet::new();
@@ -15,8 +17,8 @@ pub fn solve() {
             set.insert(*j);
         }
 
-        if set.len() == 14 {
-            res = (i + 14);
+        if set.len() == n_lookup {
+            res = i + n_lookup;
             break;
         }
 
