@@ -2,7 +2,6 @@ use adventofcode::Solvable;
 
 mod part1;
 mod part2;
-
 pub struct Day6 {}
 
 impl Solvable for Day6 {

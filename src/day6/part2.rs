@@ -5,24 +5,22 @@ pub fn solve() {
     let mut res = 0;
     let mut i = 0;
 
-    loop {
-        if i + 13 > data.len() {
-            break;
-        }
+    let inter = data.chars().collect::<Vec<char>>();
+    let windowed = inter.windows(14);
 
+    for val in windowed {
         let mut set: HashSet<char> = HashSet::new();
 
-        for j in 0..14 {
-            let item = data.chars().nth(i + j).unwrap();
-            set.insert(item);
+        for j in val {
+            set.insert(*j);
         }
 
         if set.len() == 14 {
-            res = i + 14;
+            res = (i + 14);
             break;
         }
 
-        i += 1;
+        i += 1
     }
 
     println!("Part2: {}", res);
