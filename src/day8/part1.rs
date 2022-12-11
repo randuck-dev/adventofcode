@@ -43,7 +43,6 @@ pub fn solve() {
                 y: row_start,
             };
 
-            println!("{}", position);
             let top = is_visible_from_top(&position.clone(), &another_grid);
             let left = is_visible_from_left(position.clone(), &another_grid);
             let right = is_visible_from_right(position.clone(), &another_grid);
@@ -91,10 +90,6 @@ fn is_visible_from_top(position_to_check: &TreePosition, grid: &Vec<Vec<u32>>) -
         }
 
         if current >= position_to_check.value {
-            println!(
-                "Position cannot be seen from top: Position: {} Overshadowing: {}",
-                position_to_check, current
-            );
             return false;
         }
 
@@ -117,10 +112,6 @@ fn is_visible_from_left(position_to_check: TreePosition, grid: &Vec<Vec<u32>>) -
         }
 
         if current >= position_to_check.value {
-            println!(
-                "Position cannot be seen from left: Position: {} Overshadowing: {}",
-                position_to_check, current
-            );
             return false;
         }
 
@@ -141,10 +132,6 @@ fn is_visible_from_right(position_to_check: TreePosition, grid: &Vec<Vec<u32>>) 
         }
 
         if current >= position_to_check.value {
-            println!(
-                "Position cannot be seen from right: Position: {} Overshadowing: {}",
-                position_to_check, current
-            );
             return false;
         }
     }
@@ -165,10 +152,6 @@ fn is_visible_from_bottom(position_to_check: TreePosition, grid: &Vec<Vec<u32>>)
         }
 
         if current >= position_to_check.value {
-            println!(
-                "Position cannot be seen from bottom: Position: {} Overshadowing: {}",
-                position_to_check, current
-            );
             return false;
         }
     }
