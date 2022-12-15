@@ -8,6 +8,7 @@ mod day5;
 mod day6;
 mod day7;
 mod day8;
+mod day9;
 
 fn main() {
     let day1: day1::Day1 = day1::Day1 {};
@@ -18,6 +19,7 @@ fn main() {
     let day6: day6::Day6 = day6::Day6 {};
     let day7: day7::Day7 = day7::Day7 {};
     let day8: day8::Day8 = day8::Day8 {};
+    let day9: day9::Day9 = day9::Day9 {};
 
     day1.solve();
     day2.solve();
@@ -28,4 +30,5 @@ fn main() {
     day6.solve();
     day7.solve();
     day8.solve();
+    day9.solve();
 }
