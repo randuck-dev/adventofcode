@@ -1,6 +1,4 @@
-pub fn solve() {
-    let data = include_str!("../inputs/1.txt");
-
+pub fn solve(data: &str) -> Result<i32, &'static str> {
     let entries = data.lines();
 
     let mut sum = 0;
@@ -16,5 +14,21 @@ pub fn solve() {
         sum += number;
     }
 
-    println!("{}", sum)
+    Ok(sum)
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::part1::solve;
+
+    #[test]
+    fn test_example() {
+        let input = "1abc2
+        pqr3stu8vwx
+        a1b2c3d4e5f
+        treb7uchet";
+
+        let res = solve(input).unwrap();
+        assert_eq!(res, 142)
+    }
 }

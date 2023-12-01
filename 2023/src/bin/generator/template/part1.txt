@@ -1,0 +1,13 @@
+pub fn solve(data: &str) -> Result<i32, &'static str> {
+   todo!() 
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::part1::solve;
+
+    #[test]
+    fn test_example() {
+        todo!()
+    }
+}

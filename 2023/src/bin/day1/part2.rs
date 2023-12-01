@@ -8,9 +8,7 @@ const SEVEN: &str = "seven";
 const EIGHT: &str = "eight";
 const NINE: &str = "nine";
 
-pub fn solve() {
-    let data = include_str!("../inputs/1.txt");
-
+pub fn solve(data: &str) -> Result<i32, &'static str> {
     let entries = data.lines();
 
     let mut sum = 0;
@@ -64,5 +62,24 @@ pub fn solve() {
         sum += number;
     }
 
-    println!("{}", sum);
+    Ok(sum)
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::part2::solve;
+
+    #[test]
+    fn test_example() {
+        let input = "two1nine
+        eightwothree
+        abcone2threexyz
+        xtwone3four
+        4nineeightseven2
+        zoneight234
+        7pqrstsixteen";
+
+        let res = solve(input).unwrap();
+        assert_eq!(res, 281)
+    }
 }
