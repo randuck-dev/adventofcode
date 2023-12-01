@@ -1,5 +1,6 @@
 pub fn solve() {
-    let data = include_str!("../inputs/1.txt");
+    let data = include_str!("../inputs/test_1_2.txt");
 
-    println!("{}", data)
+    let sum = 0;
+    assert!(sum == 281)
 }
