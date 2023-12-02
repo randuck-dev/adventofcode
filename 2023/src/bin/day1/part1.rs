@@ -1,4 +1,4 @@
-pub fn solve(data: &str) -> Result<i32, &'static str> {
+pub fn solve(data: &str) -> Result<u32, &'static str> {
     let entries = data.lines();
 
     let mut sum = 0;
@@ -8,7 +8,7 @@ pub fn solve(data: &str) -> Result<i32, &'static str> {
         let first_digit = res.first().unwrap();
         let last_digit = res.last().unwrap();
         let number = format!("{}{}", first_digit, last_digit)
-            .parse::<i32>()
+            .parse::<u32>()
             .unwrap();
 
         sum += number;

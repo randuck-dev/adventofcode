@@ -8,7 +8,7 @@ const SEVEN: &str = "seven";
 const EIGHT: &str = "eight";
 const NINE: &str = "nine";
 
-pub fn solve(data: &str) -> Result<i32, &'static str> {
+pub fn solve(data: &str) -> Result<u32, &'static str> {
     let entries = data.lines();
 
     let mut sum = 0;
@@ -58,7 +58,7 @@ pub fn solve(data: &str) -> Result<i32, &'static str> {
             last_val = String::from(digit);
         }
 
-        let number = format!("{}{}", first_val, last_val).parse::<i32>().unwrap();
+        let number = format!("{}{}", first_val, last_val).parse::<u32>().unwrap();
         sum += number;
     }
 

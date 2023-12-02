@@ -1,4 +1,4 @@
-pub fn solve(data: &str) -> Result<i32, &'static str> {
+pub fn solve(data: &str) -> Result<u32, &'static str> {
    todo!() 
 }
 
