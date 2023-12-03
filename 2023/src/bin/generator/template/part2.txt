@@ -4,10 +4,14 @@ pub fn solve(data: &str) -> Result<u32, &'static str> {
 
 #[cfg(test)]
 mod tests {
-    use crate::part1::solve;
+    use crate::part2::solve;
 
     #[test]
     fn test_example() {
-        todo!()
+        let input = "";
+
+        let res = solve(input).unwrap();
+
+        assert_eq!(res, TODO)
     }
 }
