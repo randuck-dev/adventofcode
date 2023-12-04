@@ -30,11 +30,10 @@ pub fn solve(data: &str) -> Result<u32, &'static str> {
         let mut number_raw = String::from("");
         let mut valid = false;
 
+        let mut count = 0;
         for col in 0..columns {
             let c = state[row_i][col];
-            if c.is_digit(10) {
-                number_raw = format!("{}{}", number_raw, c);
-
+            if c == '*' {
                 let left = if col != 0 {
                     state[row_i][col - 1]
                 } else {
@@ -83,26 +82,33 @@ pub fn solve(data: &str) -> Result<u32, &'static str> {
                     state[row_i][col]
                 };
 
-                if left != IGNORE && !left.is_digit(10) {
-                    valid = true;
-                } else if right != IGNORE && !right.is_digit(10) {
-                    valid = true;
-                } else if top != IGNORE && !top.is_digit(10) {
-                    valid = true;
-                } else if bottom != IGNORE && !bottom.is_digit(10) {
-                    valid = true;
-                } else if upper_left != IGNORE && !upper_left.is_digit(10) {
-                    valid = true;
-                } else if upper_right != IGNORE && !upper_right.is_digit(10) {
-                    valid = true;
-                } else if lower_left != IGNORE && !lower_left.is_digit(10) {
-                    valid = true;
-                } else if lower_right != IGNORE && !lower_right.is_digit(10) {
-                    valid = true;
+                if left != IGNORE && left.is_digit(10) {
+                    count += 1
+                }
+                if right != IGNORE && right.is_digit(10) {
+                    count += 1
+                }
+                if top != IGNORE && top.is_digit(10) {
+                    count += 1
+                }
+                if bottom != IGNORE && bottom.is_digit(10) {
+                    count += 1
+                }
+                if upper_left != IGNORE && upper_left.is_digit(10) {
+                    count += 1
+                }
+                if upper_right != IGNORE && upper_right.is_digit(10) {
+                    count += 1
+                }
+                if lower_left != IGNORE && lower_left.is_digit(10) {
+                    count += 1
+                }
+                if lower_right != IGNORE && lower_right.is_digit(10) {
+                    count += 1
                 }
             }
 
-            if gear_count {
+            if count == 2 {
                 let number = number_raw.parse::<u32>().unwrap();
                 sum += number;
                 valid = false;
