@@ -47,9 +47,9 @@ struct Line {
 
 impl Line {
     pub fn get_destination(&self, source: u64) -> u64 {
-        let diff = i64::abs((source as i64) - (self.source_range_start as i64)) as u64;
         if source < self.source_range_start + self.range_length && source >= self.source_range_start
         {
+            let diff = i64::abs((source as i64) - (self.source_range_start as i64)) as u64;
             return self.destination_range_start + diff;
         }
 
@@ -132,6 +132,7 @@ fn find_destination(data: &Vec<Line>, src: u64) -> u64 {
         let tmp_dst = so.get_destination(src);
         if tmp_dst != src {
             dst = tmp_dst;
+            break;
         }
     }
 
