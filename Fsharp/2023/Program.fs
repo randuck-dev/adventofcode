@@ -1,4 +1,4 @@
-﻿open Library.Utils
+﻿open Common.Utils
 
 module Program =
     let run day =

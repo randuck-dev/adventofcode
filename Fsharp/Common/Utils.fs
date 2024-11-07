@@ -1,4 +1,4 @@
-module Library.Utils
+module Common.Utils
 
 open System
 open System.Net
@@ -27,5 +27,5 @@ let asString : string -> string = id
 let readAllLines (data: string, f) =
     let w = data |> _.Split(Environment.NewLine) |> Seq.where (fun n -> not (String.IsNullOrEmpty(n)))
     
-    w |> Seq.map (fun n -> f(n))
+    w |> Seq.map f
     
