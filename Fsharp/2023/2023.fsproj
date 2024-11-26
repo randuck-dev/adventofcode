@@ -9,6 +9,14 @@
     <ItemGroup>
         <Compile Include="Day1.fs" />
         <Compile Include="Program.fs"/>
+        <Content Include="Inputs\day_2_test.txt" />
+        <Content Include="Inputs\day_2_input.txt" />
+        <None Include="Day2.fsx" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="Dapper" Version="2.1.35" />
+        <PackageReference Include="Npgsql" Version="9.0.1" />
     </ItemGroup>
 
     <ItemGroup>
