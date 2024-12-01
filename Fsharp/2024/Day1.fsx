@@ -14,17 +14,12 @@ let solvePart1 input =
     let leftList = Seq.map (fun (x: int list) -> x.[0]) input |> Seq.sort |> Seq.toList
     let rightList = Seq.map (fun (x: int list) -> x.[1]) input |> Seq.sort |> Seq.toList
 
-    let mutable distanceScore = 0
-
-    for i in 0..(leftList.Length - 1) do
-        let left = leftList.[i]
-        let right = rightList.[i]
-        if left > right then
-            distanceScore <- distanceScore + (left - right)
-        else
-            distanceScore <- distanceScore + (right - left)
-
-    distanceScore
+    (0, leftList, rightList)
+    |||> Seq.fold2 (
+                    fun acc left right ->
+                        acc + Math.Abs (right - left)
+                    )
+    
 
 let solvePart2 input =
     let leftList = Seq.map (fun (x: int list) -> x.[0]) input
