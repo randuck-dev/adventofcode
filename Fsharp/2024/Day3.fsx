@@ -15,6 +15,7 @@ let findAllMuls (line: string)=
         )
     |> Seq.sum
 
-input
-|> Seq.map findAllMuls
-|> Seq.sum
+let removeDontSections input = Regex.Replace(input, @"don't\(\)(.*?)(do\(\)|$)", "")
+
+let part1 = input |> Seq.map findAllMuls |> Seq.sum
+let part2 = String.Join("", input) |> _.ReplaceLineEndings("") |> removeDontSections |> findAllMuls
