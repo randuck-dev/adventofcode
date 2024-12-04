@@ -11,11 +11,14 @@
         <Content Include="Inputs\day_1_input.txt" />
         <Content Include="Inputs\day_2_input.txt" />
         <Content Include="Inputs\day_3_input.txt" />
+        <Content Include="Inputs\day_4_input.txt" />
         <Content Include="Inputs\day_2_test.txt" />
         <Content Include="Inputs\day_3_test.txt" />
+        <Content Include="Inputs\day_4_test.txt" />
         <None Include="Day1.fsx" />
-        <None Include="Day3.fsx" />
         <None Include="Day2.fsx" />
+        <None Include="Day3.fsx" />
+        <None Include="Day4.fsx" />
     </ItemGroup>
 
     <ItemGroup>
